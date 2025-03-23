@@ -1,3 +1,6 @@
+#!/bin/sh
+# Source: https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/
+
 echo "### INSTALL CILIUM CLI ###"
 
 CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
