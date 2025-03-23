@@ -2,7 +2,7 @@
 # Source: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-20-04
 
 sudo apt update
-sudo apt install nfs-kernel-server
+sudo apt install nfs-kernel-server -y
 sudo mkdir /var/nfs/data -p
 sudo chown nobody:nogroup /var/nfs/data
 # Allow all RFC-1912
