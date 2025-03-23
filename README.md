@@ -1,5 +1,6 @@
 # HAPPY LEARNING TO BECOME A SUPPERMAN
-This repo will provide you about the scripts to bootstrap the cluster for **LEARNING** purpose! 
+This repo provides you with the scripts to bootstrap a K8s cluster for **LEARNING** purposes! 
+I have been using these scripts for CKA, CKS, CKAD and research for my job.
 ## WARNING:
 ONLY SUPPORT FOR **UBUNTU 20.04 LTS**
 
