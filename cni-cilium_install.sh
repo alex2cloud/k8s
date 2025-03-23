@@ -17,3 +17,6 @@ cilium install --version ${CILIUM_VERSION}
 
 echo "EXECUTE: cilium status --wait"
 cilium status --wait
+
+echo "CHECK NODES ARE READY STATE"
+kubectl get node
