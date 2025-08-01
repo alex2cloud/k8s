@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Source: https://kubernetes.io/docs/reference/setup-tools/kubeadm
 
