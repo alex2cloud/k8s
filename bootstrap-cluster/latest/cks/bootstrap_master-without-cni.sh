@@ -445,3 +445,13 @@ sudo chmod +x /usr/local/bin/bom
 ### Kubesec Install
 curl -sSL https://github.com/controlplaneio/kubesec/releases/latest/download/kubesec_linux_amd64.tar.gz | tar zx
 sudo mv kubesec /usr/local/bin
+
+### Senario script
+sudo cp /etc/kubernetes/manifests/etcd.yaml /tmp/etcd.yaml
+sudo cp /etc/kubernetes/manifests/kube-apiserver.yaml /tmp/kube-apiserver.yaml
+sudo sed -i 's/- --client-cert-auth=true/- --client-cert-auth=false/g' /tmp/etcd.yaml
+sudo sed -i 's/- --enable-admission-plugins=NodeRestriction/- --enable-admission-plugins=AlwaysAdmit/g' /tmp/kube-apiserver.yaml
+sudo sed -i '/- --secure-port=6443/a\
+    - --anonymous-auth=true' /tmp/kube-apiserver.yaml
+sudo mv /tmp/kube-apiserver.yaml /etc/kubernetes/manifests/kube-apiserver.yaml
+sudo mv /tmp/etcd.yaml /etc/kubernetes/manifests/etcd.yaml
