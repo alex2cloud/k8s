@@ -49,6 +49,7 @@ resource "google_compute_instance" "k8s-master" {
   boot_disk {
     initialize_params {
       image = "ubuntu-os-cloud/ubuntu-2404-noble-amd64-v20250725"
+      size = 50
     }
   }
   network_interface {
@@ -67,6 +68,7 @@ resource "google_compute_instance" "k8s-worker01" {
   boot_disk {
     initialize_params {
       image = "ubuntu-os-cloud/ubuntu-2404-noble-amd64-v20250725"
+      size = 50
     }
   }
   network_interface {
@@ -85,6 +87,7 @@ resource "google_compute_instance" "k8s-worker02" {
   boot_disk {
     initialize_params {
       image = "ubuntu-os-cloud/ubuntu-2404-noble-amd64-v20250725"
+      size = 50
     }
   }
   network_interface {
