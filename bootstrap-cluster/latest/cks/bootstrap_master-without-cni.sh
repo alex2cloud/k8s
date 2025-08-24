@@ -441,3 +441,7 @@ sudo cp istio-*/bin/istioctl /usr/local/bin/
 curl -LO https://github.com/kubernetes-sigs/bom/releases/download/v0.6.0/bom-amd64-linux
 sudo mv bom-amd64-linux /usr/local/bin/bom
 sudo chmod +x /usr/local/bin/bom
+
+### Kubesec Install
+curl -sSL https://github.com/controlplaneio/kubesec/releases/latest/download/kubesec_linux_amd64.tar.gz | tar zx
+sudo mv kubesec /usr/local/bin
