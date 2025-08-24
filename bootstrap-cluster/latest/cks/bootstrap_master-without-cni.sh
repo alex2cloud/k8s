@@ -459,9 +459,14 @@ sudo cp -r  $GOPATH/src/github.com/aquasecurity/kube-bench/cfg /tmp/
 ### Senario script
 sudo cp /etc/kubernetes/manifests/etcd.yaml /tmp/etcd.yaml
 sudo cp /etc/kubernetes/manifests/kube-apiserver.yaml /tmp/kube-apiserver.yaml
+sudo cp /var/lib/kubelet/config.yaml /tmp/config.yaml
 sudo sed -i 's/- --client-cert-auth=true/- --client-cert-auth=false/g' /tmp/etcd.yaml
 sudo sed -i 's/- --enable-admission-plugins=NodeRestriction/- --enable-admission-plugins=AlwaysAdmit/g' /tmp/kube-apiserver.yaml
 sudo sed -i '/- --secure-port=6443/a\
     - --anonymous-auth=true' /tmp/kube-apiserver.yaml
+sudo sed -i '/anonymous:/,/enabled:/ s/enabled: false/enabled: true/' /tmp/config.yaml
 sudo mv /tmp/kube-apiserver.yaml /etc/kubernetes/manifests/kube-apiserver.yaml
 sudo mv /tmp/etcd.yaml /etc/kubernetes/manifests/etcd.yaml
+sudo mv /tmp/config.yaml /var/lib/kubelet/config.yaml
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet

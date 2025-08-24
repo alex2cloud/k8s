@@ -481,6 +481,13 @@ sudo go build -o kube-bench .
 sudo cp kube-bench /usr/local/bin/kube-bench
 sudo cp -r  $GOPATH/src/github.com/aquasecurity/kube-bench/cfg /tmp/
 
+### Senario script
+sudo cp /var/lib/kubelet/config.yaml /tmp/config.yaml
+sudo sed -i '/anonymous:/,/enabled:/ s/enabled: false/enabled: true/' /tmp/config.yaml
+sudo mv /tmp/config.yaml /var/lib/kubelet/config.yaml
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
+
 ###
 echo
 echo "EXECUTE ON MASTER: kubeadm token create --print-join-command --ttl 0"
