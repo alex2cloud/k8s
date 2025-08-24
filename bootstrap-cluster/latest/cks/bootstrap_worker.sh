@@ -479,7 +479,7 @@ sudo go install  github.com/aquasecurity/kube-bench@latest
 cd $GOPATH/src/github.com/aquasecurity/kube-bench
 sudo go build -o kube-bench .
 sudo cp kube-bench /usr/local/bin/kube-bench
-sudo cp -r  $GOPATH/src/github.com/aquasecurity/kube-bench/cfg /tmp/
+sudo cp -r  $GOPATH/src/github.com/aquasecurity/kube-bench/cfg /root/
 
 ### Senario script
 sudo cp /var/lib/kubelet/config.yaml /tmp/config.yaml
