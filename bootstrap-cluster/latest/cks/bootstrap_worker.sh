@@ -471,6 +471,15 @@ echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.
 sudo apt-get update
 sudo apt-get install trivy
 
+### Kube-bench Install
+sudo apt install golang-go -y
+sudo mkdir -p $GOPATH/src/github.com/aquasecurity/kube-bench
+sudo git clone https://github.com/aquasecurity/kube-bench.git $GOPATH/src/github.com/aquasecurity/kube-bench
+sudo go install  github.com/aquasecurity/kube-bench@latest
+cd $GOPATH/src/github.com/aquasecurity/kube-bench
+sudo go build -o kube-bench .
+sudo cp kube-bench /usr/local/bin/kube-bench
+sudo cp -r  $GOPATH/src/github.com/aquasecurity/kube-bench/cfg /tmp/
 
 ###
 echo

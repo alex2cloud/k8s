@@ -446,6 +446,16 @@ sudo chmod +x /usr/local/bin/bom
 curl -sSL https://github.com/controlplaneio/kubesec/releases/latest/download/kubesec_linux_amd64.tar.gz | tar zx
 sudo mv kubesec /usr/local/bin
 
+### Kube-bench Install
+sudo apt install golang-go -y
+sudo mkdir -p $GOPATH/src/github.com/aquasecurity/kube-bench
+sudo git clone https://github.com/aquasecurity/kube-bench.git $GOPATH/src/github.com/aquasecurity/kube-bench
+sudo go install  github.com/aquasecurity/kube-bench@latest
+cd $GOPATH/src/github.com/aquasecurity/kube-bench
+sudo go build -o kube-bench .
+sudo cp kube-bench /usr/local/bin/kube-bench
+sudo cp -r  $GOPATH/src/github.com/aquasecurity/kube-bench/cfg /tmp/
+
 ### Senario script
 sudo cp /etc/kubernetes/manifests/etcd.yaml /tmp/etcd.yaml
 sudo cp /etc/kubernetes/manifests/kube-apiserver.yaml /tmp/kube-apiserver.yaml
